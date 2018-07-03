@@ -1,0 +1,22 @@
+//Import material theming
+@import '~@angular/material/theming';
+
+//Import custom component theme
+@import './list/user-list-theme';
+
+//Generate core styles
+@include mat-core();
+
+//Generate color palette
+$custom-theme-primary: mat-palette($mat-blue);
+$custom-theme-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-teal);
+//Generate themes
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+//Export theme object
+@include angular-material-theme($custom-theme);
+
+
+//Export user list theme
+@include ac-user-list-theme($custom-theme);

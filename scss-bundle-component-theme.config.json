@@ -1,0 +1,4 @@
+{
+  "entry": "./projects/achraf-components/src/lib/list/user-list-theme.scss",
+  "dest": "./dist/achraf-components/lib/list/user-list-theme.scss"
+}

@@ -1,0 +1,34 @@
+//No color configuration
+
+.ac-user-list {
+  border: none;
+  li {
+    list-style-type: none;
+    span {
+      cursor: pointer;
+    }
+  }
+}
+
+.ac-user-list-item {
+  display: inline-block;
+  width: 220px;
+
+}
+
+.ac-user-list-icons{
+  display: inline-block;
+}
+
+.ac-user-list-icon {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.ac-user-list-name {
+  display: inline-block;
+}
+button {
+  outline: none;
+}
+

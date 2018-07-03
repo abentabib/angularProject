@@ -1,0 +1,34 @@
+@import '../achraf-components.scss';
+@include list-theme($theme);
+
+ul {
+    list-style-type: none;
+  }
+
+  .selectedColor span{
+    background-color:#929fb5;
+    color: white;
+  }
+
+  .list-group-item{
+    display: inline-block;
+    width: 220px;
+    vertical-align: middle;
+  }
+
+  .name{
+    margin-bottom: 15px;
+  }
+
+  .removeIcon{
+    display: inline-block;
+  }
+  .editIcon{
+    display: inline-block;
+  }
+  .removeIcon:hover{
+    color:grey;
+  }
+  .editIcon:hover{
+    color:grey;
+  }

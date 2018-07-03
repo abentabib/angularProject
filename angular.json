@@ -23,8 +23,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "src/styles.scss",
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+              }
             ],
+            "stylePreprocessorOptions": {
+             "includePaths": [
+               "dist/achraf-components/"
+             ] 
+            },
             "scripts": []
           },
           "configurations": {
@@ -72,7 +83,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -115,6 +129,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "achrafComponents": {
+      "root": "projects/achraf-components",
+      "sourceRoot": "projects/achraf-components/src",
+      "projectType": "library",
+      "prefix": "achraf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/achraf-components/tsconfig.lib.json",
+            "project": "projects/achraf-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/achraf-components/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/achraf-components/src/test.ts",
+            "tsConfig": "projects/achraf-components/tsconfig.spec.json",
+            "karmaConfig": "projects/achraf-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/achraf-components/tsconfig.lib.json",
+              "projects/achraf-components/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

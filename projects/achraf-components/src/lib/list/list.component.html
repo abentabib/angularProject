@@ -1,0 +1,73 @@
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>List of colleagues</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card>
+  <div >
+
+        <!--Search name entry-->
+    <mat-form-field>
+        <input
+        matInput
+        type="text"
+        [(ngModel)]="searchText"
+        name="searchText"
+        placeholder="Search colleagues..."
+        (keyup.enter)="cleanSearchBar()"
+        (click)="noEdit()">
+    </mat-form-field>
+        <!--Add name entry-->
+       <mat-form-field>
+          <input
+          matInput
+          type="text"
+          [(ngModel)]="name"
+          placeholder="Add colleague..."
+          (keyup.enter)="addItem(name)"
+          (click)="noEdit()">
+         </mat-form-field>
+
+  <mat-card>
+    <ul class="ac-user-list">
+      <li
+          *ngFor="let colleague of colleagues| filter:searchText let i=index "
+          [ngClass]="{'ac-user-list-select': colleague.selected}">
+          <div class="ac-user-list-name">
+
+            <!--Display of names entries -->
+            <span *ngIf="!onEdit || !colleague.edit"
+                  class="ac-user-list-item"
+                  (click)='onNameClick(colleague.name, $event)'
+            >
+                {{colleague.name | titlecase}}
+            </span>
+
+            <!--Input Field for edit name entry -->
+            <input
+              matInput
+              #editField
+              [(ngModel)]="nameModified"
+              (keyup.enter)="editItem(colleague.name)"
+              *ngIf="onEdit && colleague.edit"
+              class="ac-user-list-item"
+              placeholder={{colleague.name|titlecase}}>
+            </div>
+            <div class="ac-user-list-icons">
+              <!--ICON-BUTTON-->
+              <mat-icon class="ac-user-list-icon" *ngIf="!onEdit || !colleague.edit"  (click)="removeItem(colleague.name)">delete</mat-icon>
+              <mat-icon class="ac-user-list-icon" *ngIf="!onEdit || !colleague.edit"  (click)="editBarShow(colleague.name)">border_color</mat-icon>
+
+              <mat-icon class="ac-user-list-icon" *ngIf="onEdit && colleague.edit"   (click)="editItem(colleague.name)">done</mat-icon>
+              <mat-icon class="ac-user-list-icon" *ngIf="onEdit && colleague.edit"  (click)="noEdit()">cancel</mat-icon>
+          </div>
+      </li>
+    </ul>
+  </mat-card>
+</div>
+
+<button mat-button (click)="resetSelection()"><mat-icon>autorenew</mat-icon> Reset Selection </button>
+</mat-card>
+
+
